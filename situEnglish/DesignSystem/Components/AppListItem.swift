@@ -18,7 +18,7 @@ struct AppListItem: View {
     let action: (() -> Void)?
 
     init(
-        title: String,
+        _ title: String,
         subtitle: String? = nil,
         leadingIcon: String? = nil,
         badgeTitle: String? = nil,
@@ -68,27 +68,36 @@ private extension AppListItem {
             }
 
             VStack(alignment: .leading, spacing: Spacing.Layout.xs) {
-                HStack(spacing: Spacing.Layout.sm) {
-                    AppText(title, style: .bodyBoldText, color: .appCardForeground)
-
-                    if let badgeTitle {
-                        AppBadge(badgeTitle, variant: badgeVariant)
-                    }
-                }
+                AppText(title, style: .bodyBoldText, color: .appCardForeground)
+                    .lineLimit(1)
+                    .truncationMode(.tail)
 
                 if let subtitle {
                     AppText(subtitle, style: .captionText, color: .appMutedForeground)
+                        .lineLimit(2)
+                        .truncationMode(.tail)
                 }
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
 
-            Spacer(minLength: Spacing.Layout.md)
+            if hasTrailingContent {
+                VStack(alignment: .trailing, spacing: Spacing.Layout.sm) {
+                    if let badgeTitle {
+                        AppBadge(badgeTitle, variant: badgeVariant)
+                    }
 
-            if let trailingText {
-                AppText(trailingText, style: .captionBoldText, color: .appMutedForeground)
-            }
+                    HStack(spacing: Spacing.Layout.sm) {
+                        if let trailingText {
+                            AppText(trailingText, style: .captionBoldText, color: .appMutedForeground)
+                                .lineLimit(1)
+                        }
 
-            if showsChevron {
-                AppIcon(name: "chevron.right", size: .sm, color: .appMutedForeground)
+                        if showsChevron {
+                            AppIcon(name: "chevron.right", size: .sm, color: .appMutedForeground)
+                        }
+                    }
+                }
+                .fixedSize(horizontal: true, vertical: false)
             }
         }
         .padding(Spacing.Layout.lg)
@@ -98,5 +107,9 @@ private extension AppListItem {
                 .stroke(Color.appBorder, lineWidth: 1)
         }
         .clipShape(RoundedRectangle(cornerRadius: Spacing.Radius.lg))
+    }
+
+    var hasTrailingContent: Bool {
+        badgeTitle != nil || trailingText != nil || showsChevron
     }
 }

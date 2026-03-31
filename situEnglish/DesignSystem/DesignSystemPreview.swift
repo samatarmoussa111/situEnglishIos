@@ -61,6 +61,64 @@ struct DesignSystemPreview: View {
                 }
                 
                 Divider()
+
+                // MARK: - List Items
+                VStack(alignment: .leading, spacing: Spacing.Layout.md) {
+                    AppText("List Items", style: .bodyBoldText)
+
+                    VStack(spacing: Spacing.Layout.md) {
+                        AppListItem("Profile settings")
+
+                        AppListItem(
+                            "Notifications",
+                            trailingText: "Enabled"
+                        )
+
+                        AppListItem(
+                            "Vocabulary pack",
+                            badgeTitle: "New",
+                            badgeVariant: .primary
+                        )
+
+                        AppListItem(
+                            "Audio lessons",
+                            leadingIcon: "headphones"
+                        )
+
+                        AppListItem(
+                            "Daily speaking lesson",
+                            subtitle: "Practice 12 essential travel phrases",
+                            leadingIcon: "mic.fill",
+                            badgeTitle: "Beginner",
+                            trailingText: "8 min"
+                        )
+
+                        AppListItem(
+                            "Pro subscription",
+                            subtitle: "Unlimited access to all scenarios",
+                            leadingIcon: "crown.fill",
+                            badgeTitle: "Active",
+                            badgeVariant: .primary,
+                            trailingText: "Renews Apr 22"
+                        )
+
+                        AppListItem(
+                            "Grammar review",
+                            showsChevron: false
+                        )
+
+                        AppListItem(
+                            "Advanced conversation coaching",
+                            subtitle: "Weekly live practice with corrections and speaking feedback",
+                            leadingIcon: "person.2.fill",
+                            badgeTitle: "Premium",
+                            badgeVariant: .primary,
+                            trailingText: "2 slots left"
+                        )
+                    }
+                }
+                
+                Divider()
                 
                 // MARK: - Buttons
                 VStack(alignment: .leading, spacing: Spacing.Layout.md) {
