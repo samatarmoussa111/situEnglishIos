@@ -1,3 +1,10 @@
+//
+//  DesignSystemPreview.swift
+//  situEnglish
+//
+//  Created by samatar barkadleh on 3/30/26.
+//
+
 import SwiftUI
 
 struct DesignSystemPreview: View {
@@ -44,64 +51,93 @@ struct DesignSystemPreview: View {
                 Divider()
                 
                 // MARK: - Buttons
-                VStack(spacing: Spacing.Layout.md) {
-                    Button("Primary Button") {}
-                        .font(AppTextStyle.buttonText.font)
-                        .padding(Spacing.Layout.md)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.appPrimary)
-                        .foregroundColor(Color.appPrimaryForeground)
-                        .cornerRadius(10)
+                VStack(alignment: .leading, spacing: Spacing.Layout.md) {
                     
-                    Button("Secondary Button") {}
-                        .font(AppTextStyle.buttonText.font)
-                        .padding(Spacing.Layout.md)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.appSecondary)
-                        .foregroundColor(Color.appSecondaryForeground)
-                        .cornerRadius(10)
+                    Text("Buttons - Text Only")
+                        .appStyle(.bodyBoldText)
+                    
+                    VStack(spacing: Spacing.Layout.sm) {
+                        AppButton(variant: .primary, size: .small, width: .fit) { print("samatar")} content: { Text("Primary Small") }
+                        AppButton(variant: .secondary, size: .medium) { } content: { Text("Secondary Medium") }
+                        AppButton(variant: .destructive, size: .large) { } content: { Text("Destructive Large") }
+                    }
+                    
+                    Divider()
+                    
+                    Text("Buttons - Icon Only")
+                        .appStyle(.bodyBoldText)
+                    
+                    HStack(spacing: Spacing.Layout.sm) {
+                        AppButton(variant: .primary, size: .medium, width: .fit) { } content: {
+                            Image(systemName: "star.fill")
+                        }
+                        AppButton(variant: .secondary, size: .medium, width: .fit) { } content: {
+                            Image(systemName: "heart.fill")
+                        }
+                        AppButton(variant: .destructive, size: .medium, width: .fit) { } content: {
+                            Image(systemName: "trash.fill")
+                        }
+                    }
+                    
+                    Divider()
+                    
+                    Text("Buttons - Icon + Text")
+                        .appStyle(.bodyBoldText)
+                    
+                    VStack(spacing: Spacing.Layout.sm) {
+                        AppButton(variant: .primary, size: .medium) { } content: {
+                            HStack {
+                                Image(systemName: "star.fill")
+                                Text("Primary Icon+Text")
+                            }
+                        }
+                        AppButton(variant: .secondary, size: .medium) { } content: {
+                            HStack {
+                                Image(systemName: "heart.fill")
+                                Text("Secondary Icon+Text")
+                            }
+                        }
+                        AppButton(variant: .destructive, size: .medium) { } content: {
+                            HStack {
+                                Image(systemName: "trash.fill")
+                                Text("Destructive Icon+Text")
+                            }
+                        }
+                    }
+                    
+                    Divider()
+                    
+                    Text("Buttons - Disabled / Loading")
+                        .appStyle(.bodyBoldText)
+                    
+                    VStack(spacing: Spacing.Layout.sm) {
+                        AppButton(variant: .primary, size: .medium, isDisabled: true) { } content: {
+                            Text("Disabled Primary")
+                        }
+                        AppButton(variant: .destructive, size: .medium, isLoading: true) { } content: {
+                            Text("Loading Secondary")
+                        }
+                    }
                 }
-                
+
                 Divider()
-                
-                // MARK: - Colors
-                VStack(alignment: .leading, spacing: Spacing.Layout.sm) {
-                    ColorRow(name: "Primary", color: .appPrimary)
-                    ColorRow(name: "Background", color: .appBackground)
-                    ColorRow(name: "Foreground", color: .appForeground)
-                    ColorRow(name: "Secondary", color: .appSecondary)
-                    ColorRow(name: "Muted", color: .appMuted)
-                    ColorRow(name: "Accent", color: .appAccent)
-                    ColorRow(name: "Destructive", color: .appDestructive)
-                    ColorRow(name: "Border", color: .appBorder)
-                    ColorRow(name: "Input", color: .appInput)
-                    ColorRow(name: "Ring", color: .appRing)
+
+                // MARK: - Spinners
+                VStack(alignment: .leading, spacing: Spacing.Layout.md) {
+                    Text("Spinners")
+                        .appStyle(.bodyBoldText)
+                        .foregroundColor(.appForeground)
+
+                    HStack(spacing: Spacing.Layout.lg) {
+                        AppSpinner()
+                        AppSpinner(size: .medium, color: .appSecondary)
+                        AppSpinner(size: .large, color: .appDestructive)
+                    }
                 }
             }
             .padding(Spacing.Layout.lg)
         }
         .background(Color.appBackground)
-    }
-}
-
-// MARK: - Color Row
-struct ColorRow: View {
-    let name: String
-    let color: Color
-    
-    var body: some View {
-        HStack(spacing: Spacing.Layout.md) {
-            Text(name)
-                .frame(width: 140, alignment: .leading)
-                .foregroundColor(.appForeground)
-            
-            Rectangle()
-                .fill(color)
-                .frame(height: 30)
-                .cornerRadius(6)
-            
-            Spacer()
-        }
     }
 }
 

@@ -36,4 +36,33 @@ enum Spacing {
         static let heading: CGFloat = 2
         static let button: CGFloat = 0
     }
+
+    // MARK: - Spinner Sizes
+    enum SpinnerSize {
+        case small
+        case medium
+        case large
+
+        var diameter: CGFloat {
+            switch self {
+            case .small:
+                return 20
+            case .medium:
+                return 28
+            case .large:
+                return 36
+            }
+        }
+
+        var lineWidth: CGFloat {
+            switch self {
+            case .small:
+                return 2.5
+            case .medium:
+                return 3
+            case .large:
+                return 4
+            }
+        }
+    }
 }
