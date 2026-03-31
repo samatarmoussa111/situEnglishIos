@@ -6,6 +6,28 @@ struct AppTextStyle {
     let lineSpacing: CGFloat
 }
 
+struct AppText: View {
+    let content: LocalizedStringKey
+    let style: AppTextStyle
+    let color: Color
+
+    init(
+        _ content: LocalizedStringKey,
+        style: AppTextStyle,
+        color: Color = .appForeground
+    ) {
+        self.content = content
+        self.style = style
+        self.color = color
+    }
+
+    var body: some View {
+        Text(content)
+            .appStyle(style)
+            .foregroundColor(color)
+    }
+}
+
 // MARK: - All Text Styles
 extension AppTextStyle {
     

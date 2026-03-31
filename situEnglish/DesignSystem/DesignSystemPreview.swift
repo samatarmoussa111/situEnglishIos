@@ -14,38 +14,19 @@ struct DesignSystemPreview: View {
                 
                 // MARK: - Headings
                 VStack(alignment: .leading, spacing: Spacing.Layout.sm) {
-                    Text("Heading 1")
-                        .appStyle(.h1)
-                        .foregroundColor(.appForeground)
-                    
-                    Text("Heading 2")
-                        .appStyle(.h2)
-                        .foregroundColor(.appForeground)
-                    
-                    Text("Heading 3")
-                        .appStyle(.h3)
-                        .foregroundColor(.appForeground)
+                    AppText("Heading 1", style: .h1)
+                    AppText("Heading 2", style: .h2)
+                    AppText("Heading 3", style: .h3)
                 }
                 
                 Divider()
                 
                 // MARK: - Body Text
                 VStack(alignment: .leading, spacing: Spacing.Layout.sm) {
-                    Text("Body regular")
-                        .appStyle(.bodyText)
-                        .foregroundColor(.appForeground)
-                    
-                    Text("Body bold")
-                        .appStyle(.bodyBoldText)
-                        .foregroundColor(.appForeground)
-                    
-                    Text("Caption regular")
-                        .appStyle(.captionText)
-                        .foregroundColor(.appMutedForeground)
-                    
-                    Text("Caption bold")
-                        .appStyle(.captionBoldText)
-                        .foregroundColor(.appMutedForeground)
+                    AppText("Body regular", style: .bodyText)
+                    AppText("Body bold", style: .bodyBoldText)
+                    AppText("Caption regular", style: .captionText, color: .appMutedForeground)
+                    AppText("Caption bold", style: .captionBoldText, color: .appMutedForeground)
                 }
                 
                 Divider()
@@ -53,8 +34,7 @@ struct DesignSystemPreview: View {
                 // MARK: - Buttons
                 VStack(alignment: .leading, spacing: Spacing.Layout.md) {
                     
-                    Text("Buttons - Text Only")
-                        .appStyle(.bodyBoldText)
+                    AppText("Buttons - Text Only", style: .bodyBoldText)
                     
                     VStack(spacing: Spacing.Layout.sm) {
                         AppButton(variant: .primary, size: .small, width: .fit) { print("samatar")} content: { Text("Primary Small") }
@@ -64,8 +44,7 @@ struct DesignSystemPreview: View {
                     
                     Divider()
                     
-                    Text("Buttons - Icon Only")
-                        .appStyle(.bodyBoldText)
+                    AppText("Buttons - Icon Only", style: .bodyBoldText)
                     
                     HStack(spacing: Spacing.Layout.sm) {
                         AppButton(variant: .primary, size: .medium, width: .fit) { } content: {
@@ -81,8 +60,7 @@ struct DesignSystemPreview: View {
                     
                     Divider()
                     
-                    Text("Buttons - Icon + Text")
-                        .appStyle(.bodyBoldText)
+                    AppText("Buttons - Icon + Text", style: .bodyBoldText)
                     
                     VStack(spacing: Spacing.Layout.sm) {
                         AppButton(variant: .primary, size: .medium) { } content: {
@@ -107,8 +85,7 @@ struct DesignSystemPreview: View {
                     
                     Divider()
                     
-                    Text("Buttons - Disabled / Loading")
-                        .appStyle(.bodyBoldText)
+                    AppText("Buttons - Disabled / Loading", style: .bodyBoldText)
                     
                     VStack(spacing: Spacing.Layout.sm) {
                         AppButton(variant: .primary, size: .medium, isDisabled: true) { } content: {
@@ -124,9 +101,7 @@ struct DesignSystemPreview: View {
 
                 // MARK: - Spinners
                 VStack(alignment: .leading, spacing: Spacing.Layout.md) {
-                    Text("Spinners")
-                        .appStyle(.bodyBoldText)
-                        .foregroundColor(.appForeground)
+                    AppText("Spinners", style: .bodyBoldText)
 
                     HStack(spacing: Spacing.Layout.lg) {
                         AppSpinner()
