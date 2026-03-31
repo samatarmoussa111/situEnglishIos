@@ -45,6 +45,24 @@ enum Spacing {
         static let full: CGFloat = 999
     }
 
+    // MARK: - Icon Sizes
+    enum IconSize {
+        case sm
+        case md
+        case lg
+
+        var value: CGFloat {
+            switch self {
+            case .sm:
+                return 16
+            case .md:
+                return 20
+            case .lg:
+                return 24
+            }
+        }
+    }
+
     // MARK: - Spinner Sizes
     enum SpinnerSize {
         case small

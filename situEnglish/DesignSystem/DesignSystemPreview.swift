@@ -35,6 +35,32 @@ struct DesignSystemPreview: View {
                 DesignSystemTextFieldPreview()
                 
                 Divider()
+
+                // MARK: - Icons
+                VStack(alignment: .leading, spacing: Spacing.Layout.md) {
+                    AppText("Icons", style: .bodyBoldText)
+
+                    HStack(spacing: Spacing.Layout.lg) {
+                        AppIcon(name: "star.fill", size: .sm)
+                        AppIcon(name: "heart.fill", size: .md, color: .appSecondary)
+                        AppIcon(name: "trash.fill", size: .lg, color: .appDestructive)
+                    }
+                }
+                
+                Divider()
+
+                // MARK: - Badges
+                VStack(alignment: .leading, spacing: Spacing.Layout.md) {
+                    AppText("Badges", style: .bodyBoldText)
+
+                    HStack(spacing: Spacing.Layout.sm) {
+                        AppBadge("Beginner")
+                        AppBadge("Grammar")
+                        AppBadge("In Progress", variant: .primary)
+                    }
+                }
+                
+                Divider()
                 
                 // MARK: - Buttons
                 VStack(alignment: .leading, spacing: Spacing.Layout.md) {
@@ -53,13 +79,13 @@ struct DesignSystemPreview: View {
                     
                     HStack(spacing: Spacing.Layout.sm) {
                         AppButton(variant: .primary, size: .medium, width: .fit) { } content: {
-                            Image(systemName: "star.fill")
+                            AppIcon(name: "star.fill")
                         }
                         AppButton(variant: .secondary, size: .medium, width: .fit) { } content: {
-                            Image(systemName: "heart.fill")
+                            AppIcon(name: "heart.fill")
                         }
                         AppButton(variant: .destructive, size: .medium, width: .fit) { } content: {
-                            Image(systemName: "trash.fill")
+                            AppIcon(name: "trash.fill")
                         }
                     }
                     
@@ -70,19 +96,19 @@ struct DesignSystemPreview: View {
                     VStack(spacing: Spacing.Layout.sm) {
                         AppButton(variant: .primary, size: .medium) { } content: {
                             HStack {
-                                Image(systemName: "star.fill")
+                                AppIcon(name: "star.fill")
                                 Text("Primary Icon+Text")
                             }
                         }
                         AppButton(variant: .secondary, size: .medium) { } content: {
                             HStack {
-                                Image(systemName: "heart.fill")
+                                AppIcon(name: "heart.fill")
                                 Text("Secondary Icon+Text")
                             }
                         }
                         AppButton(variant: .destructive, size: .medium) { } content: {
                             HStack {
-                                Image(systemName: "trash.fill")
+                                AppIcon(name: "trash.fill")
                                 Text("Destructive Icon+Text")
                             }
                         }

@@ -39,8 +39,7 @@ struct AppTextField: View {
 
             HStack(spacing: Spacing.Layout.md) {
                 if let icon {
-                    Image(systemName: icon)
-                        .foregroundColor(iconColor)
+                    AppIcon(name: icon, size: .md, color: iconColor)
                 }
 
                 if isSecure {
