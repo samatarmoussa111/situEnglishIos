@@ -7,7 +7,8 @@ struct AppTextStyle {
 }
 
 struct AppText: View {
-    let content: LocalizedStringKey
+    private let localizedContent: LocalizedStringKey?
+    private let rawContent: String?
     let style: AppTextStyle
     let color: Color
 
@@ -16,15 +17,33 @@ struct AppText: View {
         style: AppTextStyle,
         color: Color = .appForeground
     ) {
-        self.content = content
+        self.localizedContent = content
+        self.rawContent = nil
+        self.style = style
+        self.color = color
+    }
+
+    init(
+        _ content: String,
+        style: AppTextStyle,
+        color: Color = .appForeground
+    ) {
+        self.localizedContent = nil
+        self.rawContent = content
         self.style = style
         self.color = color
     }
 
     var body: some View {
-        Text(content)
-            .appStyle(style)
-            .foregroundColor(color)
+        if let localizedContent {
+            Text(localizedContent)
+                .appStyle(style)
+                .foregroundColor(color)
+        } else if let rawContent {
+            Text(rawContent)
+                .appStyle(style)
+                .foregroundColor(color)
+        }
     }
 }
 

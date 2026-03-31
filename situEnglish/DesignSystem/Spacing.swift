@@ -37,6 +37,14 @@ enum Spacing {
         static let button: CGFloat = 0
     }
 
+    // MARK: - Radius
+    enum Radius {
+        static let sm: CGFloat = 8
+        static let md: CGFloat = 12
+        static let lg: CGFloat = 16
+        static let full: CGFloat = 999
+    }
+
     // MARK: - Spinner Sizes
     enum SpinnerSize {
         case small

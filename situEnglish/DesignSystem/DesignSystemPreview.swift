@@ -28,6 +28,11 @@ struct DesignSystemPreview: View {
                     AppText("Caption regular", style: .captionText, color: .appMutedForeground)
                     AppText("Caption bold", style: .captionBoldText, color: .appMutedForeground)
                 }
+
+                Divider()
+
+                // MARK: - Text Fields
+                DesignSystemTextFieldPreview()
                 
                 Divider()
                 
@@ -113,6 +118,40 @@ struct DesignSystemPreview: View {
             .padding(Spacing.Layout.lg)
         }
         .background(Color.appBackground)
+    }
+}
+
+private struct DesignSystemTextFieldPreview: View {
+    @State private var email = ""
+    @State private var password = ""
+    @State private var invalidEmail = "wrong-email-format"
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: Spacing.Layout.md) {
+            AppText("Text Fields", style: .bodyBoldText)
+
+            AppTextField(
+                label: "Email",
+                placeholder: "Enter your email",
+                text: $email
+            )
+
+            AppTextField(
+                label: "Password",
+                placeholder: "Enter your password",
+                text: $password,
+                icon: "lock",
+                isSecure: true
+            )
+
+            AppTextField(
+                label: "Email",
+                placeholder: "Enter your email",
+                text: $invalidEmail,
+                error: "Please enter a valid email address",
+                icon: "envelope"
+            )
+        }
     }
 }
 

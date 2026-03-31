@@ -72,7 +72,7 @@ struct AppButton<Content: View>: View {
         .disabled(isDisabled || isLoading)
         .background(backgroundColor)
         .foregroundColor(foregroundColor)
-        .cornerRadius(12)
+        .cornerRadius(Spacing.Radius.md)
     }
 }
 
