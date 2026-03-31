@@ -54,17 +54,18 @@ struct CustomTabBar: View {
                         Text(tab.title)
                             .font(.caption)
                     }
-                    .foregroundColor(selectedTab == tab ? Color.appPrimary : Color.appSecondary)
+                    .foregroundColor(selectedTab == tab ? Color.appPrimary : Color.appMutedForeground)
                     .frame(maxWidth: .infinity)
                 }
             }
         }
         .padding(.vertical, 10)
-        .background(
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color(.systemBackground))
-                .shadow(color: .black.opacity(0.08), radius: 10, y: 5)
-        )
+        .overlay(alignment: .top) {
+            Rectangle()
+                .fill(Color.appBorder.opacity(0.5))
+                .frame(height: 1)
+                .padding(.horizontal, 12)
+        }
         .padding(.horizontal)
     }
 }
