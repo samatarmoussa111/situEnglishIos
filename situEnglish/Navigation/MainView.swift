@@ -23,15 +23,15 @@ struct MainView: View {
                 Group {
                     switch selectedTab {
                     case .home:
-                        HomeScreen()
+                        HomeStack()
                     case .vocabulary:
-                        DesignSystemPreview()
+                        VocabularyStack()
                     case .reading:
-                        Text("Reading Screen")
+                        ReadingStack()
                     case .grammar:
-                        Text("Grammar Screen")
+                        GrammarStack()
                     case .tenses:
-                        Text("Tenses Screen")
+                        TensesStack()
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)

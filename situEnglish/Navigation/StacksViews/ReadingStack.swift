@@ -1,0 +1,17 @@
+//
+//  ReadingStack.swift
+//  situEnglish
+//
+//  Created by samatar barkadleh on 4/1/26.
+//
+
+import SwiftUI
+
+struct ReadingStack: View {
+    var body: some View {
+        NavigationStack {
+            Text("Reading Screen")
+                .navigationTitle("Reading")
+        }
+    }
+}

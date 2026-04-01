@@ -2,8 +2,6 @@
 //  AppButton.swift
 //  situEnglish
 //
-//  Created by Samatar Barkadleh on 3/30/26.
-//
 
 import SwiftUI
 
@@ -30,7 +28,7 @@ struct AppButton<Content: View>: View {
     let width: AppButtonWidth
     let isDisabled: Bool
     let isLoading: Bool
-    let action: () -> Void
+    let action: (() -> Void)?   // ✅ OPTIONNEL
     let content: () -> Content
     
     init(
@@ -39,7 +37,7 @@ struct AppButton<Content: View>: View {
         width: AppButtonWidth = .full,
         isDisabled: Bool = false,
         isLoading: Bool = false,
-        action: @escaping () -> Void,
+        action: (() -> Void)? = nil,   // ✅ optionnel
         @ViewBuilder content: @escaping () -> Content
     ) {
         self.variant = variant
@@ -52,24 +50,39 @@ struct AppButton<Content: View>: View {
     }
     
     var body: some View {
-        Button(action: action) {
-            ZStack {
-                // Contenu normal
-                content()
-                    .opacity(isLoading ? 0 : 1)
-                    .font(font)
-                    .frame(maxWidth: width == .full ? .infinity : nil)
-                    .padding(.vertical, verticalPadding)
-                    .padding(.horizontal, horizontalPadding)
-                
-                // Loading
-                if isLoading {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: foregroundColor))
+        Group {
+            if let action = action {
+                Button(action: action) {
+                    buttonContent
                 }
+                .disabled(isDisabled || isLoading)
+            } else {
+                // ✅ Utilisé dans NavigationLink
+                buttonContent
             }
         }
-        .disabled(isDisabled || isLoading)
+    }
+}
+
+// MARK: - UI
+extension AppButton {
+    
+    private var buttonContent: some View {
+        ZStack {
+            content()
+                .opacity(isLoading ? 0 : 1)
+                .font(font)
+                .frame(maxWidth: width == .full ? .infinity : nil)
+                .padding(.vertical, verticalPadding)
+                .padding(.horizontal, horizontalPadding)
+            
+            if isLoading {
+                ProgressView()
+                    .progressViewStyle(
+                        CircularProgressViewStyle(tint: foregroundColor)
+                    )
+            }
+        }
         .background(backgroundColor)
         .foregroundColor(foregroundColor)
         .cornerRadius(Spacing.Radius.md)
