@@ -7,7 +7,20 @@
 
 import SwiftUI
 
+private struct AppButtonIconSizeKey: EnvironmentKey {
+    static let defaultValue: Spacing.IconSize? = nil
+}
+
+extension EnvironmentValues {
+    var appButtonIconSize: Spacing.IconSize? {
+        get { self[AppButtonIconSizeKey.self] }
+        set { self[AppButtonIconSizeKey.self] = newValue }
+    }
+}
+
 struct AppIcon: View {
+    @Environment(\.appButtonIconSize) private var buttonIconSize
+
     let name: String
     let size: Spacing.IconSize
     let color: Color?
@@ -25,11 +38,15 @@ struct AppIcon: View {
     var body: some View {
         if let color {
             Image(systemName: name)
-                .font(.system(size: size.value))
+                .font(.system(size: resolvedSize.value, weight: .medium))
                 .foregroundColor(color)
         } else {
             Image(systemName: name)
-                .font(.system(size: size.value))
+                .font(.system(size: resolvedSize.value, weight: .medium))
         }
+    }
+
+    private var resolvedSize: Spacing.IconSize {
+        buttonIconSize ?? size
     }
 }

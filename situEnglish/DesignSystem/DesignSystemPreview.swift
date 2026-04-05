@@ -136,13 +136,13 @@ struct DesignSystemPreview: View {
                     AppText("Buttons - Icon Only", style: .bodyBoldText)
                     
                     HStack(spacing: Spacing.Layout.sm) {
-                        AppButton(variant: .primary, size: .medium, width: .fit) { } content: {
+                        AppButton(variant: .primary, size: .medium, width: .fit, isIconOnly: true) { } content: {
                             AppIcon(name: "star.fill")
                         }
-                        AppButton(variant: .secondary, size: .medium, width: .fit) { } content: {
+                        AppButton(variant: .secondary, size: .medium, width: .fit, isIconOnly: true) { } content: {
                             AppIcon(name: "heart.fill")
                         }
-                        AppButton(variant: .destructive, size: .medium, width: .fit) { } content: {
+                        AppButton(variant: .destructive, size: .medium, width: .fit, isIconOnly: true) { } content: {
                             AppIcon(name: "trash.fill")
                         }
                     }
