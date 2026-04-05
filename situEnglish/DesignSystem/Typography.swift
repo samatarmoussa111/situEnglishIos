@@ -1,6 +1,5 @@
 import SwiftUI
 
-// MARK: - Text Style (Font + LineHeight)
 struct AppTextStyle {
     let font: Font
     let lineSpacing: CGFloat
@@ -47,50 +46,44 @@ struct AppText: View {
     }
 }
 
-// MARK: - All Text Styles
 extension AppTextStyle {
-    
-    // MARK: - Headings
     static let h1 = AppTextStyle(
-        font: .custom("Inter18pt-Bold", size: Spacing.TextSize.h1),
+        font: .system(size: Spacing.TextSize.h1, weight: .bold),
         lineSpacing: Spacing.LineHeight.heading
     )
-    
+
     static let h2 = AppTextStyle(
-        font: .custom("Inter18pt-Medium", size: Spacing.TextSize.h2),
+        font: .system(size: Spacing.TextSize.h2, weight: .medium),
         lineSpacing: Spacing.LineHeight.heading
     )
-    
+
     static let h3 = AppTextStyle(
-        font: .custom("Inter18pt-Medium", size: Spacing.TextSize.h3),
+        font: .system(size: Spacing.TextSize.h3, weight: .medium),
         lineSpacing: Spacing.LineHeight.heading
     )
-    
-    // MARK: - Body
+
     static let bodyText = AppTextStyle(
-        font: .custom("Inter18pt-Regular", size: Spacing.TextSize.body),
+        font: .system(size: Spacing.TextSize.body, weight: .regular),
         lineSpacing: Spacing.LineHeight.body
     )
-    
+
     static let bodyBoldText = AppTextStyle(
-        font: .custom("Inter18pt-Medium", size: Spacing.TextSize.body),
+        font: .system(size: Spacing.TextSize.body, weight: .medium),
         lineSpacing: Spacing.LineHeight.body
     )
-    
-    // MARK: - Caption
+
     static let captionText = AppTextStyle(
-        font: .custom("Inter18pt-Regular", size: Spacing.TextSize.caption),
+        font: .system(size: Spacing.TextSize.caption, weight: .regular),
         lineSpacing: Spacing.LineHeight.caption
     )
-    
+
     static let captionBoldText = AppTextStyle(
-        font: .custom("Inter18pt-Medium", size: Spacing.TextSize.caption),
+        font: .system(size: Spacing.TextSize.caption, weight: .medium),
         lineSpacing: Spacing.LineHeight.caption
     )
-    
-    // MARK: - Button
+
     static let buttonText = AppTextStyle(
-        font: .custom("Inter18pt-Bold", size: Spacing.TextSize.body),
+        font: .system(size: Spacing.TextSize.body, weight: .bold),
         lineSpacing: Spacing.LineHeight.button
     )
 }

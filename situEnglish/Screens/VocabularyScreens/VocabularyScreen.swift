@@ -76,13 +76,18 @@ private extension VocabularyScreen {
 
             VStack(spacing: Spacing.Layout.md) {
                 ForEach(vocabularyLessons) { lesson in
-                    AppListItem(
-                        lesson.title,
-                        subtitle: lesson.subtitle,
-                        leadingIcon: lesson.icon,
-                        badgeTitle: lesson.level,
-                        trailingText: lesson.duration
-                    )
+                    NavigationLink {
+                        VocabularyDetailScreen(lessonTitle: lesson.title)
+                    } label: {
+                        AppListItem(
+                            lesson.title,
+                            subtitle: lesson.subtitle,
+                            leadingIcon: lesson.icon,
+                            badgeTitle: lesson.level,
+                            trailingText: lesson.duration
+                        )
+                    }
+                    .buttonStyle(.plain)
                 }
             }
         }
