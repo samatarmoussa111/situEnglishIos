@@ -2,6 +2,7 @@ import SwiftUI
 
 struct VocabularyDetailScreen: View {
     let lessonTitle: String
+    @State private var isSaved = false
 
     var body: some View {
         ScrollView {
@@ -14,13 +15,25 @@ struct VocabularyDetailScreen: View {
         }
         .background(Color.appBackground)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    isSaved.toggle()
+                } label: {
+                    AppIcon(
+                        name: isSaved ? "bookmark.fill" : "bookmark",
+                        size: .md,
+                        color: .appForeground
+                    )
+                }
+            }
+        }
     }
 }
 
 private extension VocabularyDetailScreen {
     var headerSection: some View {
         VStack(alignment: .leading, spacing: Spacing.Layout.md) {
-            AppBadge("Vocabulary Detail", variant: .primary)
             AppText(lessonTitle, style: .h1)
             AppText(
                 "Learn useful words in context so you can understand them faster and reuse them in real conversations.",

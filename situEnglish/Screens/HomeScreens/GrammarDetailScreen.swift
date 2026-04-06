@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GrammarDetailScreen: View {
     let lessonTitle: String
+    @State private var isSaved = false
 
     var body: some View {
         ScrollView {
@@ -21,13 +22,25 @@ struct GrammarDetailScreen: View {
         }
         .background(Color.appBackground)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    isSaved.toggle()
+                } label: {
+                    AppIcon(
+                        name: isSaved ? "bookmark.fill" : "bookmark",
+                        size: .md,
+                        color: .appForeground
+                    )
+                }
+            }
+        }
     }
 }
 
 private extension GrammarDetailScreen {
     var headerSection: some View {
         VStack(alignment: .leading, spacing: Spacing.Layout.md) {
-            AppBadge("Grammar Detail", variant: .primary)
             AppText(lessonTitle, style: .h1)
             AppText(
                 "This lesson helps you understand the rule, when to use it, and how to recognize it in real English sentences.",

@@ -10,8 +10,7 @@ import SwiftUI
 struct ReadingStack: View {
     var body: some View {
         NavigationStack {
-            Text("Reading Screen")
-                .navigationTitle("Reading")
+            ReadingScreen()
         }
     }
 }

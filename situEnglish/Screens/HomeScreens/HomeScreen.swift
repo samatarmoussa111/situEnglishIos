@@ -59,8 +59,6 @@ struct HomeScreen: View {
 private extension HomeScreen {
     var headerSection: some View {
         VStack(alignment: .leading, spacing: Spacing.Layout.md) {
-            AppBadge("Grammar Lessons", variant: .primary)
-
             AppText("Learn English grammar with clear, contextual lessons.", style: .h1)
 
             AppText(

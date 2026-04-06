@@ -58,8 +58,6 @@ struct VocabularyScreen: View {
 private extension VocabularyScreen {
     var headerSection: some View {
         VStack(alignment: .leading, spacing: Spacing.Layout.md) {
-            AppBadge("Vocabulary Lessons", variant: .primary)
-
             AppText("Build practical vocabulary for real situations.", style: .h1)
 
             AppText(
